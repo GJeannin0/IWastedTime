@@ -48,6 +48,12 @@ public class Sword : MonoBehaviour {
 	private float timeChargingShockwave = 0.0f;
 	[SerializeField]
 	private float maximumChargeTime = 4.0f;
+	[SerializeField]
+	private float leftShockwaveAngle = 180.0f;
+	[SerializeField]
+	private float downwardRightShockwaveAngle = -45.0f;
+	[SerializeField]
+	private float downwardLeftShockwaveAngle = -135.0f;
 
 	[SerializeField]
 	private Shockwave shockwave;
@@ -188,12 +194,12 @@ public class Sword : MonoBehaviour {
 			if (aimingDown)
 			{
 				Vector3 projPosition = new Vector3(gameObject.transform.position.x - positionOffset, gameObject.transform.position.y - positionOffset, gameObject.transform.position.z);
-				Instantiate(shockwave, projPosition, Quaternion.Euler(0.0f,0.0f,-135.0f));
+				Instantiate(shockwave, projPosition, Quaternion.Euler(0.0f,0.0f, downwardLeftShockwaveAngle));
 			}
 			else
 			{
 				Vector3 projPosition = new Vector3(gameObject.transform.position.x - positionOffset, gameObject.transform.position.y, gameObject.transform.position.z);
-				Instantiate(shockwave, projPosition, Quaternion.Euler(Vector3.down * 180.0f));
+				Instantiate(shockwave, projPosition, Quaternion.Euler(Vector3.down * leftShockwaveAngle));
 			}
 		}
 		else
@@ -201,7 +207,7 @@ public class Sword : MonoBehaviour {
 			if (aimingDown)
 			{
 				Vector3 projPosition = new Vector3(gameObject.transform.position.x + positionOffset, gameObject.transform.position.y - positionOffset, gameObject.transform.position.z);
-				Instantiate(shockwave, projPosition, Quaternion.Euler(0.0f, 0.0f, -45.0f));
+				Instantiate(shockwave, projPosition, Quaternion.Euler(0.0f, 0.0f, downwardRightShockwaveAngle));
 			}
 			else
 			{
